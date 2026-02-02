@@ -1,0 +1,24 @@
+{
+    "name": "demovendor/demopackage",
+    "description": "Demo Laravel 12 Custom Package",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Your Nmae",
+            "email": "your@example.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "DemoVendor\\DemoPackage\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "DemoVendor\\DemoPackage\\Providers\\DemoPackageServiceProvider"
+            ]
+        }
+    }
+}
