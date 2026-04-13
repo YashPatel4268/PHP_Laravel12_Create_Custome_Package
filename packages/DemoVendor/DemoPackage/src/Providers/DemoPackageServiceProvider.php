@@ -3,7 +3,7 @@
 namespace DemoVendor\DemoPackage\Providers;
 
 use Illuminate\Support\ServiceProvider;
-
+use Illuminate\Routing\Router;
 class DemoPackageServiceProvider extends ServiceProvider
 {
     public function boot()
@@ -19,6 +19,14 @@ class DemoPackageServiceProvider extends ServiceProvider
             __DIR__.'/../../config/demopackage.php' => config_path('demopackage.php'),
             __DIR__.'/../../resources/views' => resource_path('views/vendor/demopackage'),
         ], 'demopackage');
+
+         //  Register middleware alias
+        $router = $this->app->make(Router::class);
+
+        $router->aliasMiddleware(
+            'demopackage.log',
+            \DemoVendor\DemoPackage\Middleware\LogPackageUsage::class
+        );
     }
 
     public function register()
